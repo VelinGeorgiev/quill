@@ -1,3 +1,19 @@
+Developer: https://github.com/quilljs/quill/blob/develop/.github/DEVELOPMENT.md
+Download: https://rubyinstaller.org/downloads/ -> Ruby+Devkit 2.7.3-1 (x64)
+bundle update --bundler
+
+Workflow
+
+A standard development workflow involves:
+
+    npm start - to run development services
+    localhost:9000/standalone/snow - to interactively develop and test an isolated example
+    localhost:9000/karma/debug.html - to run unit tests
+    If everything is working, run the webdriver tests.
+
+
+
+
 Note: This branch and README covers the upcoming 2.0 release. View [1.x docs here](https://github.com/quilljs/quill/tree/1.3.6).
 
 <h1 align="center">

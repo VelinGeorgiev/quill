@@ -28,7 +28,7 @@
       "proxy": "9000",
       "jekyll": "4000",
       "karma": "9876",
-      "webpack": "9080"
+      "webpack": "9081"
     }
   },
   "dependencies": {
@@ -75,7 +75,7 @@
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.2"
   },
   "license": "BSD-3-Clause",
   "repository": {
@@ -150,17 +150,17 @@
   },
   "scripts": {
     "build": "npm run lint && npm run build:webpack",
-    "build:webpack": "webpack --config _develop/webpack.config.js; rm dist/quill.core dist/quill.bubble dist/quill.snow",
+    "build:webpack": "rm ./dist/quill.core ./dist/quill.bubble ./dist/quill.snow && webpack --config ./_develop/webpack.config.js",
     "build:release": "./_develop/scripts/release.sh",
     "develop": "npm run start",
     "lint": "eslint blots core formats modules themes ui test",
-    "start": "npm run build:webpack; bundle exec foreman start -f _develop/procfile",
+    "start": "npm run build:webpack && bundle exec foreman start -f ./_develop/procfile",
     "test": "npm run test:unit",
-    "test:all": "npm run test:unit; npm run test:functional",
+    "test:all": "npm run test:unit && npm run test:functional",
     "test:functional": "./_develop/scripts/puppeteer.sh",
-    "test:unit": "npm run build; karma start _develop/karma.config.js",
-    "test:coverage": "webpack --env.coverage --config _develop/webpack.config.js; karma start _develop/karma.config.js --reporters coverage",
-    "travis": "npm run lint && karma start _develop/karma.config.js --reporters dots,saucelabs"
+    "test:unit": "npm run build && karma start ./_develop/karma.config.js",
+    "test:coverage": "webpack --env.coverage --config ./_develop/webpack.config.js && karma start ./_develop/karma.config.js --reporters coverage",
+    "travis": "npm run lint && karma start ./_develop/karma.config.js --reporters dots,saucelabs"
   },
   "keywords": [
     "editor",
